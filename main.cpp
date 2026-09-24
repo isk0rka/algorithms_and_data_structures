@@ -6,7 +6,8 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include <random>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -61,13 +62,9 @@ void user_input_range(int& A, int& B)
 
 void generate_array(int array[], int size, int min_value, int max_value)
 {
-    random_device rd;
-    mt19937 generator(rd());
-    uniform_int_distribution<int> distribution(min_value, max_value);
-
     for (int i = 0; i < size; ++i)
     {
-        array[i] = distribution(generator);
+        array[i] = min_value + rand() % (max_value - min_value + 1);
     }
 }
 
@@ -111,6 +108,8 @@ void print_result(int sum)
 
 int main()
 {
+    srand(time(nullptr));
+
     constexpr int SIZE = 10;
 
     int array[SIZE];
