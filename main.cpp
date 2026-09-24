@@ -44,9 +44,10 @@ int user_input(const char* message)
 
 void user_input_range(int& A, int& B)
 {
+    A = user_input("Введите границу A: ");
+
     while (true)
     {
-        A = user_input("Введите границу A: ");
         B = user_input("Введите границу B: ");
 
         if (is_valid_range(A, B))
@@ -54,7 +55,7 @@ void user_input_range(int& A, int& B)
             return;
         }
 
-        cout << "Ошибка: A должно быть меньше или равно B.\n";
+        cout << "Ошибка: B должно быть больше или равно A.\n";
     }
 }
 
